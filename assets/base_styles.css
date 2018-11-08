@@ -35,11 +35,28 @@ header {
   max-width: 100%;
 }
 
+.burgernav-mobile {
+  display: none;
+}
+
 /* nav bar styles */
-/* this gives us a stacked design suitable for mobile; flex below */
+nav {
+  padding-left: 3%;
+  display: flex;
+  align-items: center;
+}
+
 nav ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  width: 100%;
+}
+
+nav ul li {
+  flex: 1;
+  font-size: 1.5em;
+  justify-content: space-around;
 }
 
 nav a {
@@ -52,23 +69,73 @@ nav a:hover {
   background-color: #1D2731;
 }
 
-/* flex styles for nav bar */
+/* tablets */
+@media screen and (max-width: 871px){
+  body{
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 
-@media screen and (min-width: 768px){ /* only when brownser is 768px+ */
-  nav {
-    padding-left: 3%;
-    display: flex;
-    align-items: center;
+  header{
+    max-width: 871px;
+    grid-template-columns: 1fr;
+  }
+
+  h1.logo {
+    text-align: center;
+  }
+
+  .wrapper{
+    max-width: 820px;
+    max-width: 92%;
+    padding-top: 0px;
+  }
+
+/* mobiles */
+@media screen and (max-width: 480px){
+  header{
+    max-width: 480px;
+  }
+
+  .wrapper{
+    max-width: 92%;
+  }
+
+  h1.logo {
+    max-width: 100%;
+    margin: auto;
+  }
+
+  img.logoimage{
+    margin: 0;
+    padding: 0;
+    max-width: 460px;
+    width: 98%;
   }
 
   nav ul {
-    display: flex;
-    width: 100%;
+    display: block;
   }
 
-  nav ul li {
-    flex: 1;
-    font-size: 1.5em;
-    justify-content: space-around;
+  .burgernav-mobile{
+    background: #404040 98% center;
+    display: block;
+    font-size: 27px;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  nav.site_nav {
+    overflow: hidden;
+    background: #505050;
+    height: 0;
+    position: static;
+  }
+
+  nav.site_nav.open {
+    height: auto;
   }
 }

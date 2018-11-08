@@ -6,7 +6,6 @@
   #1D2731 ivory black
 */
 
-
 .header {
   text-align: center;
 }
@@ -88,4 +87,22 @@
   position: absolute;
   right: 1vh;
   bottom: 1vh;
+}
+
+/* tablets */
+@media screen and (max-width: 871px){
+  .concerts {
+    font-size: 80%;
+  }
+}
+
+/* mobiles */
+@media screen and (max-width: 480px){
+  .concerts {
+    grid-gap: 20px;
+  }
+
+  .concert {
+    grid-template-columns: 1fr;
+  }
 }

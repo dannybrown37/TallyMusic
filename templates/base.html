@@ -19,7 +19,8 @@
           <img class="logoimage" src="{% static 'logo.png' %}" />
         </a>
       </h1>
-      <nav>
+      <a class="burgernav-mobile">&#9776;</a>
+      <nav class="site_nav">
         <ul>
           <li><a href="{% url 'calendar' %}">Upcoming</a></li>
           <li><a href="{% url 'concerts:past_events' %}">Past</a></li>
@@ -34,5 +35,8 @@
       {% endblock %}
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'mobile_menu.js' %}"></script>
+    
   </body>
 </html>

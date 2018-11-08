@@ -35,3 +35,10 @@
   bottom: 5px;
   right: 5px;
 }
+
+/* tablets */
+@media screen and (max-width: 871px){
+  .venues {
+    grid-template-columns: 1fr;
+  }
+}
