@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="header">Tally Venues</h1>
+  <div class="venues">
+    {% for venue in venues %}
+      <div class="venue">
+        <h3>
+          <a href="{% url 'concerts:venue_events' slug=venue.slug%}">
+            {{ venue.name }}
+          </a>
+        </h3>
+        <span class="venue_address">{{ venue.address }}</span>
+        <span class="venue_website">
+          <a href="{{ venue.website }}" target="_blank">
+            Venue Website &#9835;
+          </a>
+        </span>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

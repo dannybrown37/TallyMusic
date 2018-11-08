@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <!-- Variable header options -->
+  {% if request.resolver_match.url_name == "calendar" %}
+  <h1 class="header">Upcoming Events</h1>
+  {% elif request.resolver_match.url_name == "past_events" %}
+  <h1 class="header">Past Events</h1>
+  {% elif request.resolver_match.url_name == "past_venue_events" %}
+  <h1 class="header">Past Events at {{ concerts.0.venue }}</h1>
+  {% elif request.resolver_match.url_name == "venue_events" %}
+  <h1 class="header">Upcoming Events at {{ concerts.0.venue }}</h1>
+  {% endif %}
+
+  <!-- Top paginator -->
+  {% if concerts.has_other_pages %}
+  <div class="center">
+    <ul class="top paginator">
+      {% if concerts.has_previous %}
+        <li><a href="?page={{ concerts.previous_page_number }}">&laquo;</a></li>
+      {% endif %}
+      {% for i in concerts.paginator.page_range %}
+        {% if concerts.number == i %}
+        <li class="active"><span>{{ i }}</span></li>
+        {% else %}
+          <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if concerts.has_next %}
+        <li><a href="?page={{ concerts.next_page_number }}">&raquo;</a></li>
+      {% endif %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- Concerts section  -->
+  <div class="concerts">
+    {% for concert in concerts %}
+      <div class="concert">
+        <div class="date">
+          <span class="day">{{ concert.date.day }}</span>
+          <span class="month">{{ concert.date|date:'F' }}</span>
+          <span class="year">{{ concert.date.year }}</span>
+        </div>
+        <div class="details">
+          <span class="headliner">{{ concert.headliner }}</span>
+          <span class="support">{{ concert.support }}</span>
+          <span class="price">{{ concert.price }}</span>
+          <span class="concert_website">
+            <a href="{{ concert.website }}" target="_blank">
+              Event Website &#9835;
+            </a>
+          </span>
+        </div>
+        <div class="venue">
+          <span class="venue_name">
+            <a href="{% url 'concerts:venue_events' slug=concert.venue.slug %}">
+              {{ concert.venue.name }}
+            </a>
+          </span>
+          <span class="address">{{ concert.venue.address }}</span>
+          <span class="venue_website">
+            <a href="{{ concert.venue.website }}" target="_blank">
+              Venue Website &#9833;
+            </a>
+          </span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Lower paginator -->
+  {% if concerts.has_other_pages %}
+  <div class="center">
+    <ul class="paginator">
+      {% if concerts.has_previous %}
+        <li><a href="?page={{ concerts.previous_page_number }}">&laquo;</a></li>
+      {% endif %}
+      {% for i in concerts.paginator.page_range %}
+        {% if concerts.number == i %}
+        <li class="active"><span>{{ i }}</span></li>
+        {% else %}
+          <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if concerts.has_next %}
+        <li><a href="?page={{ concerts.next_page_number }}">&raquo;</a></li>
+      {% endif %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- Link to past events from current events listing for venue filter  -->
+  {% if request.resolver_match.url_name == "venue_events" %}
+    <p>
+      <a href="{% url 'concerts:past_venue_events' slug=concerts.0.venue.slug %}">
+        See past events at {{ concerts.0.venue }}
+      </a>
+    </p>
+  {% endif %}
+
+
+{% endblock %}

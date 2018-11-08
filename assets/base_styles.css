@@ -1,0 +1,74 @@
+/*
+  Colors:
+  #0B3C5D prussian blue
+  #328CC1 sky blue
+  #D9B310 gold leaf
+  #1D2731 ivory black
+*/
+
+body {
+  background-color: #1D2731;
+  color: #328CC1;
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+a, a:link, a:visited {
+  color: #328CC1; /* same as in body */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #D9B310;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background: #0B3C5D;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  max-width: 100%;
+}
+
+/* nav bar styles */
+/* this gives us a stacked design suitable for mobile; flex below */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav a {
+  padding: 10px;
+  display: block;
+  text-align: center;
+}
+
+nav a:hover {
+  background-color: #1D2731;
+}
+
+/* flex styles for nav bar */
+
+@media screen and (min-width: 768px){ /* only when brownser is 768px+ */
+  nav {
+    padding-left: 3%;
+    display: flex;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+    width: 100%;
+  }
+
+  nav ul li {
+    flex: 1;
+    font-size: 1.5em;
+    justify-content: space-around;
+  }
+}

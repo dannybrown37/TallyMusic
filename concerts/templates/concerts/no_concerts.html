@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>No concerts!</h1>
+  <!--
+    If we followed a venue filter that has no upcoming events, this will
+    automatically redirect us to the past venue events for that venue.
+  -->
+  {% if slug %}
+    <meta http-equiv="refresh"
+          content="1;url={% url 'concerts:past_venue_events' slug=slug %}" />
+    <p>There are no upcoming events for this venue! Redirecting to past events.</p>
+  {% else %}
+  <p>
+    <a href="javascript:javascript:history.go(-1)">
+      You've filtered too much out. Click here to go back to the previous page.
+    </a>
+  </p>
+  {% endif %}
+{% endblock %}

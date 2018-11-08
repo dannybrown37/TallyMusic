@@ -1,0 +1,38 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tally Music</title>
+    <link rel="stylesheet" href="{% static 'venue_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'concert_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'pagination_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'base_styles.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+  </head>
+  <body>
+    <header class="wrapper">
+      <h1 class="logo">
+        <a href={% url 'calendar' %}>
+          <img class="logoimage" src="{% static 'logo.png' %}" />
+        </a>
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="{% url 'calendar' %}">Upcoming</a></li>
+          <li><a href="{% url 'concerts:past_events' %}">Past</a></li>
+          <li><a href="{% url 'concerts:venues' %}">Venues</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="wrapper">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+  </body>
+</html>
