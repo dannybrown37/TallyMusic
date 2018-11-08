@@ -87,19 +87,13 @@ nav a:hover {
   }
 
   .wrapper{
-    max-width: 820px;
     max-width: 92%;
-    padding-top: 0px;
   }
 
 /* mobiles */
 @media screen and (max-width: 480px){
   header{
     max-width: 480px;
-  }
-
-  .wrapper{
-    max-width: 92%;
   }
 
   h1.logo {

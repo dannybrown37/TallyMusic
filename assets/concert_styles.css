@@ -89,6 +89,41 @@
   bottom: 1vh;
 }
 
+/* The next several sytles handle the background images */
+.concerts .concert:nth-child(8n+1){
+  background: url(drums.png) no-repeat 66% 33%;
+  opacity: 0.5;
+}
+
+.concerts .concert:nth-child(8n+2){
+  background: url(electricguitar.png) no-repeat 66% 33%;
+}
+
+.concerts .concert:nth-child(8n+3){
+  background: url(synth.png) no-repeat 66% 33%;
+}
+
+.concerts .concert:nth-child(8n+4){
+  background: url(guitar.png) no-repeat 66% 33%;
+}
+
+.concerts .concert:nth-child(8n+5){
+  background: url(bassguitar.png) no-repeat 66% 33%;
+}
+
+.concerts .concert:nth-child(8n+6){
+  background: url(keys.png) no-repeat 66% 33%;
+}
+
+.concerts .concert:nth-child(8n+7){
+  background: url(frenchhorn.png) no-repeat 66% 33%;
+}
+
+.concerts .concert:nth-child(8n+8){
+  background: url(bigstrings.png) no-repeat 66% 33%;
+}
+
+
 /* tablets */
 @media screen and (max-width: 871px){
   .concerts {
