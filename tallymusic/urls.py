@@ -20,6 +20,7 @@ import concerts.views as concert_views
 
 urlpatterns = [
     url(r'^$', concert_views.calendar, name="calendar"),
+    url(r'^about/$', concert_views.about, name="about"),
     url(r'^admin/', admin.site.urls),
     url(r'^concerts/', include('concerts.urls')),
 ]

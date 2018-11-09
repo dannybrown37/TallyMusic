@@ -65,7 +65,12 @@
               {{ concert.venue.name }}
             </a>
           </span>
-          <span class="address">{{ concert.venue.address }}</span>
+          <span class="address">
+            <a href="https://www.google.com/maps?q={{ concert.venue.address }}"
+               target="_blank">
+              {{ concert.venue.address }}
+            </a>
+          </span>
           <span class="venue_website">
             <a href="{{ concert.venue.website }}" target="_blank">
               Venue Website &#9833;

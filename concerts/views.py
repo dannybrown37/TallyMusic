@@ -75,3 +75,7 @@ def past_venue_events(request, slug):
         return render(request, 'concerts/calendar.html', {'concerts': concerts})
     else:
         return render(request, 'concerts/no_concerts.html')
+
+
+def about(request):
+    return render(request, "concerts/about.html")
