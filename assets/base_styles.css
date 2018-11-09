@@ -71,7 +71,7 @@ nav a:hover {
 }
 
 /* tablets */
-@media screen and (max-width: 871px){
+@media screen and (max-width: 768px){
   body{
     margin: 0;
     padding-top: 0;
@@ -79,7 +79,7 @@ nav a:hover {
   }
 
   header{
-    max-width: 871px;
+    max-width: 99vw;
     grid-template-columns: 1fr;
   }
 

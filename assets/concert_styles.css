@@ -13,7 +13,7 @@
 .concerts {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 5px;
+  grid-gap: 1vh;
 }
 
 .concert {
@@ -90,6 +90,7 @@
 
 .concert .venue .venue_name {
   font-size: 1.69em;
+  word-wrap: break-word;
 }
 
 .concert .venue .address {
@@ -103,10 +104,6 @@
 }
 
 /* The next several sytles handle the background images */
-.concert .details {
-  position: relative;
-  z-index: 1;
-}
 
 .concert .details .bg-image {
   position: absolute;
@@ -114,61 +111,72 @@
   top: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.2;
-  width: 33%;
+  opacity: 0.1;
+  width: 100%;
   height: 100%;
 }
 
 .concert:nth-of-type(8n+1) .details .bg-image {
-  background: url(drums.png) 66% 33%;
+  background: url(drums.png);
 }
 
 .concert:nth-of-type(8n+2) .details .bg-image {
-  background: url(electricguitar.png) 66% 33%;
+  background: url(electricguitar.png);
 }
 
 .concert:nth-of-type(8n+3) .details .bg-image {
-  background: url(synth.png) 66% 33%;
+  background: url(synth.png);
 }
 
 .concert:nth-of-type(8n+4) .details .bg-image {
-  background: url(bassguitar.png) 67% 33%;
+  background: url(bassguitar.png);
 }
 
 .concert:nth-of-type(8n+5) .details .bg-image {
-  background: url(guitar.png) 66% 33%;
+  background: url(guitar.png);
 }
 
 .concert:nth-of-type(8n+6) .details .bg-image {
-  background: url(keys.png) 66% 33%;
+  background: url(keys.png);
 }
 
 .concert:nth-of-type(8n+7) .details .bg-image {
-  background: url(frenchhorn.png) 66% 33%;
+  background: url(frenchhorn.png);
 }
 
 .concert:nth-of-type(8n+8) .details .bg-image {
-  background: url(bigstrings.png) 66% 33%;
+  background: url(bigstrings.png);
 }
 
 /* tablets */
-@media screen and (max-width: 871px){
-  .concerts {
-    font-size: 80%;
+@media screen and (max-width: 768px){
+  .concerts .concert .venue {
+    max-width: 30vw;
   }
 
-  .concerts .concert .venue {
-    max-width: 175.55px;
+  .concert .details .bg-image {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    width: 100%;
+    height: 100%;
   }
 }
 
 /* mobiles */
 @media screen and (max-width: 480px){
   .concerts {
-    grid-gap: 20px;
+    grid-gap: 1.5vh;
   }
 
   .concert {
     grid-template-columns: 1fr;
+  }
+
+  .concerts .concert .venue {
+    max-width: 100%;
   }
 }

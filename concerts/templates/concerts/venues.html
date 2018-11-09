@@ -10,7 +10,12 @@
             {{ venue.name }}
           </a>
         </h3>
-        <span class="venue_address">{{ venue.address }}</span>
+        <span class="venue_address">
+          <a href="https://www.google.com/maps?q={{ venue.address }}"
+             target="_blank">
+            {{ venue.address }}
+          </a>
+        </span>
         <span class="venue_website">
           <a href="{{ venue.website }}" target="_blank">
             Venue Website &#9835;

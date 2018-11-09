@@ -37,7 +37,7 @@
 }
 
 /* tablets */
-@media screen and (max-width: 871px){
+@media screen and (max-width: 768px){
 
 }
 
@@ -51,7 +51,7 @@
   .venues .venue .venue_address {
     position: static;
   }
-  
+
   .venues .venue .venue_website {
     position: static;
   }
