@@ -8,7 +8,7 @@
 
 .venues {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 10px;
 }
 
@@ -38,7 +38,21 @@
 
 /* tablets */
 @media screen and (max-width: 871px){
-  .venues {
+
+}
+
+/* mobiles */
+@media screen and (max-width: 480px){
+  .venues .venue {
+    display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .venues .venue .venue_address {
+    position: static;
+  }
+  
+  .venues .venue .venue_website {
+    position: static;
   }
 }

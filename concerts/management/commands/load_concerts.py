@@ -28,23 +28,37 @@ class Command(BaseCommand):
 
         for concert in data:
             # Put genres into a catchall 'notes'
-            try:
+            if 'genres' in concert and 'notes' in concert:
+                concert['notes'] += concert['genres']
+                concert['notes'] = ', '.join(concert['notes'])
+                del concert['genres']
+            elif 'genres' in concert:
                 concert['notes'] = ', '.join(concert['genres'])
                 del concert['genres']
-            except KeyError:
-                pass
+            elif 'notes' in concert:
+                concert['notes'] = ', '.join(concert['notes'])
+
+            # Deal with Opening Nights venue addresses being lists...
+            if isinstance(concert['venue_address'], list):
+                for i in range(len(concert['venue_address'])):
+                    concert['venue_address'][i] = concert['venue_address'][i].strip()
+                concert['venue_address'] = ' '.join(concert['venue_address'])
+
 
             # encode to utf-8 to avoid encoding errors later
             # remove the awful right and left apostrophes that ruin so much
             for key, value in concert.iteritems():
-                concert[key] = value.encode("utf-8")
-                concert[key] = re.sub(u"(\u2018|\u2019)", "'", value)
+                try:
+                    concert[key] = value.encode("utf-8")
+                    concert[key] = re.sub(u"(\u2018|\u2019)", "'", value)
+                except AttributeError:
+                    print concert
+                    wait = raw_input("Press enter to continue.")
 
             # Now that we've prepped our data, start with the venue
             try:
                 venue = Venue.objects.get(name=concert['venue'])
             except Venue.DoesNotExist:
-                print "Can't find venue! " + concert['venue']
                 if 'venue_address' not in concert:
                     google = "https://www.google.com/search?q="
                     wb.open_new_tab(google + concert['venue'])
@@ -57,13 +71,13 @@ class Command(BaseCommand):
                     concert['venue_slug'] = slugify(concert['venue'])
                 try:
                     venue = Venue.objects.create(
-                                name=concert['venue'],
-                                slug=concert['venue_slug'],
-                                address=concert['venue_address'],
-                                city="",
-                                state="",
-                                zip="",
-                                website=concert['venue_website']
+                        name=concert['venue'],
+                        slug=concert['venue_slug'],
+                        address=concert['venue_address'],
+                        city="",
+                        state="",
+                        zip="",
+                        website=concert['venue_website']
                     )
                     venues_successfully_created.append(concert['venue'])
                 except:

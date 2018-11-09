@@ -66,6 +66,19 @@
   bottom: 1vh;
 }
 
+/* Notes dynamic display, needs jquery to work, of course  */
+
+.concert .details .notes {
+  overflow: hidden;
+  height: 0;
+  position: static;
+}
+
+.concert .details .notes.open {
+  height: auto;
+  padding-top: 1.5vh;
+}
+
 /* VENUE display */
 
 .concert .venue {
@@ -90,44 +103,62 @@
 }
 
 /* The next several sytles handle the background images */
-.concerts .concert:nth-child(8n+1){
-  background: url(drums.png) no-repeat 66% 33%;
-  opacity: 0.5;
+.concert .details {
+  position: relative;
+  z-index: 1;
 }
 
-.concerts .concert:nth-child(8n+2){
-  background: url(electricguitar.png) no-repeat 66% 33%;
+.concert .details .bg-image {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.2;
+  width: 33%;
+  height: 100%;
 }
 
-.concerts .concert:nth-child(8n+3){
-  background: url(synth.png) no-repeat 66% 33%;
+.concert:nth-of-type(8n+1) .details .bg-image {
+  background: url(drums.png) 66% 33%;
 }
 
-.concerts .concert:nth-child(8n+4){
-  background: url(guitar.png) no-repeat 66% 33%;
+.concert:nth-of-type(8n+2) .details .bg-image {
+  background: url(electricguitar.png) 66% 33%;
 }
 
-.concerts .concert:nth-child(8n+5){
-  background: url(bassguitar.png) no-repeat 66% 33%;
+.concert:nth-of-type(8n+3) .details .bg-image {
+  background: url(synth.png) 66% 33%;
 }
 
-.concerts .concert:nth-child(8n+6){
-  background: url(keys.png) no-repeat 66% 33%;
+.concert:nth-of-type(8n+4) .details .bg-image {
+  background: url(bassguitar.png) 67% 33%;
 }
 
-.concerts .concert:nth-child(8n+7){
-  background: url(frenchhorn.png) no-repeat 66% 33%;
+.concert:nth-of-type(8n+5) .details .bg-image {
+  background: url(guitar.png) 66% 33%;
 }
 
-.concerts .concert:nth-child(8n+8){
-  background: url(bigstrings.png) no-repeat 66% 33%;
+.concert:nth-of-type(8n+6) .details .bg-image {
+  background: url(keys.png) 66% 33%;
 }
 
+.concert:nth-of-type(8n+7) .details .bg-image {
+  background: url(frenchhorn.png) 66% 33%;
+}
+
+.concert:nth-of-type(8n+8) .details .bg-image {
+  background: url(bigstrings.png) 66% 33%;
+}
 
 /* tablets */
 @media screen and (max-width: 871px){
   .concerts {
     font-size: 80%;
+  }
+
+  .concerts .concert .venue {
+    max-width: 175.55px;
   }
 }
 

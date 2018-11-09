@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 import datetime
 from django.shortcuts import render
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import EmptyPage, PageNotAnInteger
+from .digg_paginator import DiggPaginator as Paginator
 from .models import Concert, Venue
 
 
