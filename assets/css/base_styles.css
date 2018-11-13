@@ -118,7 +118,7 @@ nav a:hover {
   }
 
   .burgernav-mobile {
-    background: #404040 98% center;
+    background: #0B3C5D 98% center;
     display: block;
     font-size: 1.69em;
     height: 1.4em;
@@ -129,7 +129,7 @@ nav a:hover {
 
   nav.site_nav {
     overflow: hidden;
-    background: #505050;
+    background: #1D2731;
     height: 0;
     position: static;
   }

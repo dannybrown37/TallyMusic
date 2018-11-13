@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $(".concerts .concert").click(function(){
-    $(this).find(".details .notes").toggleClass("open");
+  $(".concerts .concert .details").click(function(){
+    $(this).find(".notes").toggleClass("open");
   });
 });
