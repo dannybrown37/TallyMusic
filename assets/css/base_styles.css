@@ -1,0 +1,140 @@
+/*
+  Colors:
+  #0B3C5D prussian blue
+  #328CC1 sky blue
+  #D9B310 gold leaf
+  #1D2731 ivory black
+*/
+
+body {
+  background-color: #1D2731;
+  color: #328CC1;
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+  padding-bottom: 2vh;
+}
+
+a, a:link, a:visited {
+  color: #328CC1; /* same as in body */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #D9B310;
+}
+
+.wrapper {
+  max-width: 75vw;
+  margin: 0 auto;
+}
+
+header {
+  background: #0B3C5D;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  max-width: 100vw;
+}
+
+.burgernav-mobile {
+  display: none;
+}
+
+/* nav bar styles */
+nav {
+  padding-left: 3%;
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  width: 100%;
+}
+
+nav ul li {
+  flex: 1;
+  font-size: 1.5em;
+  justify-content: space-around;
+}
+
+nav a {
+  padding: 1.3vw;
+  display: block;
+  text-align: center;
+}
+
+nav a:hover {
+  background-color: #1D2731;
+}
+
+
+/* big tablets,  small monitors, landscape mode */
+@media screen and (max-width: 1416px){
+  body{
+    margin: 0;
+    padding: 0;
+  }
+
+  header{
+    grid-template-columns: 1fr;
+    max-width: 99vw;
+  }
+
+  h1.logo {
+    text-align: center;
+  }
+
+  .wrapper {
+    max-width: 92vw;
+  }
+}
+
+/* mobiles */
+@media screen and (max-width: 706px){
+  header {
+    max-width: 98vw;
+  }
+
+  h1.logo {
+    maw-width: 98vw;
+    margin: auto;
+  }
+
+  img.logoimage {
+    margin: 0;
+    padding: 0;
+    width: 93vw;
+  }
+
+  nav {
+    padding: 0;
+  }
+
+  nav ul {
+    display: block;
+  }
+
+  .burgernav-mobile {
+    background: #404040 98% center;
+    display: block;
+    font-size: 1.69em;
+    height: 1.4em;
+    text-align: center;
+    cursor: pointer;
+    max-width: 92vw;
+  }
+
+  nav.site_nav {
+    overflow: hidden;
+    background: #505050;
+    height: 0;
+    position: static;
+  }
+
+  nav.site_nav.open {
+    height: auto;
+  }
+}

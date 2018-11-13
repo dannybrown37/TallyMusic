@@ -14,25 +14,7 @@
   {% endif %}
 
   <!-- Top paginator -->
-  {% if concerts.has_other_pages %}
-  <div class="center">
-    <ul class="top paginator">
-      {% if concerts.has_previous %}
-        <li><a href="?page={{ concerts.previous_page_number }}">&laquo;</a></li>
-      {% endif %}
-      {% for i in concerts.page_range %}
-        {% if concerts.number == i %}
-        <li class="active"><span>{{ i }}</span></li>
-        {% else %}
-          <li><a href="?page={{ i }}">{{ i }}</a></li>
-        {% endif %}
-      {% endfor %}
-      {% if concerts.has_next %}
-        <li><a href="?page={{ concerts.next_page_number }}">&raquo;</a></li>
-      {% endif %}
-    </ul>
-  </div>
-  {% endif %}
+  {% include 'concerts/paginator.html' %}
 
   <!-- Concerts section  -->
   <div class="concerts">
@@ -50,7 +32,7 @@
           <span class="price">{{ concert.price }}</span>
           {% if concert.notes %}
           <div class="notes open">Click for more information &#8595;</div>
-          <div class="notes">{{ concert.notes }}</div>
+          <div class="notes">{{ concert.notes|linebreaksbr }}</div>
           <div class="notes">Click to hide &#8593;</div>
           {% endif %}
           <span class="concert_website">
@@ -82,25 +64,7 @@
   </div>
 
   <!-- Lower paginator -->
-  {% if concerts.has_other_pages %}
-  <div class="center">
-    <ul class="paginator">
-      {% if concerts.has_previous %}
-        <li><a href="?page={{ concerts.previous_page_number }}">&laquo;</a></li>
-      {% endif %}
-      {% for i in concerts.page_range %}
-        {% if concerts.number == i %}
-        <li class="active"><span>{{ i }}</span></li>
-        {% else %}
-          <li><a href="?page={{ i }}">{{ i }}</a></li>
-        {% endif %}
-      {% endfor %}
-      {% if concerts.has_next %}
-        <li><a href="?page={{ concerts.next_page_number }}">&raquo;</a></li>
-      {% endif %}
-    </ul>
-  </div>
-  {% endif %}
+  {% include 'concerts/paginator.html' %}
 
   <!-- Link to past events from current events listing for venue filter  -->
   {% if request.resolver_match.url_name == "venue_events" %}

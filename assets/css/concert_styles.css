@@ -1,0 +1,172 @@
+/*
+  Colors:
+  #0B3C5D prussian blue
+  #328CC1 sky blue
+  #D9B310 gold leaf
+  #1D2731 ivory black
+*/
+
+.header {
+  text-align: center;
+}
+
+.concerts {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1vh;
+}
+
+.concert {
+  display: grid;
+  grid-template-columns: 1fr 9fr 4fr;
+  border: 1px solid #D9B310;
+}
+
+/* DATE display */
+.concert .date {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+  color: #1D2731;
+  background-color: #D9B310;
+  padding: 1vh;
+  min-width: 124px;
+}
+
+.concert .date .day {
+  font-size: 3em;
+}
+
+.concert .date .month {
+  font-size: 1.5em;
+}
+
+.concert .date .year {
+  font-size: .88em;
+}
+
+/* CONCERT display */
+
+.concert .details {
+  padding: 10px;
+  position: relative;
+  padding-bottom: 4vh; /* percentage of viewport height */
+}
+
+.concert .details .headliner {
+  font-size: 2.69em;
+}
+
+.concert .details .price {
+  display: block;
+}
+
+.concert .details .concert_website {
+  position: absolute;
+  right: 1vh;
+  bottom: 1vh;
+}
+
+/* Notes dynamic display, needs jquery to work, of course  */
+
+.concert .details .notes {
+  overflow: hidden;
+  height: 0;
+  position: static;
+}
+
+.concert .details .notes.open {
+  height: auto;
+  padding-top: 1.5vh;
+}
+
+/* VENUE display */
+
+.concert .venue {
+  background-color: #0B3C5D;
+  padding: 10px;
+  position: relative;
+  padding-bottom: 4vh; /* percentage of viewport height */
+}
+
+.concert .venue .venue_name {
+  font-size: 1.69em;
+  word-wrap: break-word;
+}
+
+.concert .venue .address {
+  display: block;
+}
+
+.concert .venue .venue_website {
+  position: absolute;
+  right: 1vh;
+  bottom: 1vh;
+}
+
+/* The next several sytles handle the background images */
+
+.concert .details .bg-image {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  width: 100%;
+  height: 100%;
+}
+
+.concert:nth-of-type(8n+1) .details .bg-image {
+  background: url(drums.png);
+}
+
+.concert:nth-of-type(8n+2) .details .bg-image {
+  background: url(electricguitar.png);
+}
+
+.concert:nth-of-type(8n+3) .details .bg-image {
+  background: url(synth.png);
+}
+
+.concert:nth-of-type(8n+4) .details .bg-image {
+  background: url(bassguitar.png);
+}
+
+.concert:nth-of-type(8n+5) .details .bg-image {
+  background: url(guitar.png);
+}
+
+.concert:nth-of-type(8n+6) .details .bg-image {
+  background: url(keys.png);
+}
+
+.concert:nth-of-type(8n+7) .details .bg-image {
+  background: url(frenchhorn.png);
+}
+
+.concert:nth-of-type(8n+8) .details .bg-image {
+  background: url(bigstrings.png);
+}
+
+/* tablets */
+@media screen and (max-width: 1416px){
+  .concerts .concert .venue {
+    max-width: 30vw;
+  }
+}
+
+/* mobiles */
+@media screen and (max-width: 706px){
+  .concerts {
+    grid-gap: 1.5vh;
+  }
+
+  .concert {
+    grid-template-columns: 1fr;
+  }
+
+  .concerts .concert .venue {
+    max-width: 100%;
+  }
+}
