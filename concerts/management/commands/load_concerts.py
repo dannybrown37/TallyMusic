@@ -7,7 +7,7 @@ from django.core.management.base import BaseCommand, CommandError
 from concerts.models import Concert, Venue
 from django.utils.text import slugify
 
-# To run this code:
+# To run this code use:
 # python manage.py load_concerts name_of_file.json
 
 class Command(BaseCommand):
@@ -22,29 +22,13 @@ class Command(BaseCommand):
 
         venues_successfully_created = []
         venues_failed_to_be_created = []
-        concerts_without_venues_wtf = []
+        concerts_without_venues = []
         concerts_successfully_created = []
         duplicate_concerts_not_created = []
 
         for concert in data:
-            # Put genres into a catchall 'notes'
-            if 'genres' in concert and 'notes' in concert:
-                concert['notes'] += concert['genres']
-                concert['notes'] = ', '.join(concert['notes'])
-                del concert['genres']
-            elif 'genres' in concert:
-                concert['notes'] = ', '.join(concert['genres'])
-                del concert['genres']
-            elif 'notes' in concert:
-                concert['notes'] = ', '.join(concert['notes'])
 
-            # Deal with Opening Nights venue addresses being lists...
-            if isinstance(concert['venue_address'], list):
-                for i in range(len(concert['venue_address'])):
-                    concert['venue_address'][i] = concert['venue_address'][i].strip()
-                concert['venue_address'] = ' '.join(concert['venue_address'])
-
-
+            # TODO in filter_and_combine.py -- add this there, remove here
             # encode to utf-8 to avoid encoding errors later
             # remove the awful right and left apostrophes that ruin so much
             for key, value in concert.iteritems():
@@ -52,8 +36,11 @@ class Command(BaseCommand):
                     concert[key] = value.encode("utf-8")
                     concert[key] = re.sub(u"(\u2018|\u2019)", "'", value)
                 except AttributeError:
-                    print concert
-                    wait = raw_input("Press enter to continue.")
+                    pass
+
+            # TODO in moonbot scraper -- add this there, remove it here
+            if 'ticket_link' in concert:
+                del concert['ticket_link']
 
             # Now that we've prepped our data, start with the venue
             try:
@@ -62,11 +49,12 @@ class Command(BaseCommand):
                 if 'venue_address' not in concert:
                     google = "https://www.google.com/search?q="
                     wb.open_new_tab(google + concert['venue'])
-                    prompt = ("Enter a street address for %s. " % concert['venue'])
+                    prompt = (
+                        "Enter a street address for %s. " % concert['venue']
+                    )
                     concert['venue_address'] = raw_input(prompt)
                 if 'venue_website' not in concert:
-                    prompt = ("Enter a website for %s. " % concert['venue'])
-                    concert['venue_website'] = raw_input(prompt)
+                    concert['venue_website'] = ""
                 if 'venue_slug' not in concert:
                     concert['venue_slug'] = slugify(concert['venue'])
                 try:
@@ -84,7 +72,7 @@ class Command(BaseCommand):
                     venues_failed_to_be_created.append(concert['venue'])
                     continue # skip the concert if we fail to create a venue
             except KeyError:
-                concerts_without_venues_wtf.append(concert)
+                concerts_without_venues.append(concert)
                 continue # skip the concert if there is no associated venue
 
             # Delete all the venue stuff from the dictionary since we now have
@@ -110,4 +98,4 @@ class Command(BaseCommand):
         print "Duplicates not created:", len(duplicate_concerts_not_created)
         print "Venues created: ", len(venues_successfully_created)
         print "Venues failed to be created:", len(venues_failed_to_be_created)
-        print "Concerts without venues (WTF?)", len(concerts_without_venues_wtf)
+        print "Concerts without venues (WTF?):", len(concerts_without_venues)

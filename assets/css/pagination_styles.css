@@ -1,0 +1,54 @@
+/* Pagination styles start here */
+
+.center{
+  text-align: center;
+}
+
+.paginator{
+  width: 100%;
+  margin: 2em 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.paginator li{
+  display: inline-block;
+  padding: 1vh 1vw;
+  border-radius: 12px;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.paginator li a{
+  padding: 1vh 2vw;
+}
+
+.paginator li.dots {
+  border: none;
+}
+
+.paginator li.active{
+  background-color: #444;
+}
+
+.paginator li a:hover{
+  background-color: #111;
+  border-radius: 5px;
+  transition: background-color .5s;
+}
+
+
+/* MEDIA QUERIES */
+
+/* tablets */
+@media screen and (max-width: 1416px){
+  .paginator li{
+    border: 1px solid #444;
+    margin: 5px;
+  }
+}
+
+/*mobiles*/
+@media screen and (max-width: 706px){
+
+}

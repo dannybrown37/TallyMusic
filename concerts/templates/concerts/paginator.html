@@ -1,0 +1,45 @@
+{% if concerts.has_other_pages %}
+<div class="center">
+  <ul class="paginator">
+
+    {% if concerts.has_previous %}
+      <li><a href="?page={{ concerts.previous_page_number }}">&laquo;</a></li>
+    {% endif %}
+
+    {% for i in concerts.leading_range %}
+      {% if concerts.number == i %}
+        <li class="active"><span>{{ i }}</span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+      {% if forloop.last %}
+        <li class="dots">...</li>
+      {% endif %}
+    {% endfor %}
+
+    {% for i in concerts.main_range %}
+      {% if concerts.number == i %}
+        <li class="active"><span>{{ i }}</span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% for i in concerts.trailing_range %}
+      {% if forloop.first %}
+        <li class="dots">...</li>
+      {% endif %}
+      {% if concerts.number == i %}
+        <li class="active"><span>{{ i }}</span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if concerts.has_next %}
+      <li><a href="?page={{ concerts.next_page_number }}">&raquo;</a></li>
+    {% endif %}
+
+  </ul>
+</div>
+{% endif %}
