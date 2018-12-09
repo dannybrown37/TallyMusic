@@ -118,35 +118,35 @@
 }
 
 .concert:nth-of-type(8n+1) .details .bg-image {
-  background: url(drums.png);
+  background: url('../images/drums.png');
 }
 
 .concert:nth-of-type(8n+2) .details .bg-image {
-  background: url(electricguitar.png);
+  background: url('../images/electricguitar.png');
 }
 
 .concert:nth-of-type(8n+3) .details .bg-image {
-  background: url(synth.png);
+  background: url('../images/synth.png');
 }
 
 .concert:nth-of-type(8n+4) .details .bg-image {
-  background: url(bassguitar.png);
+  background: url('../images/bassguitar.png');
 }
 
 .concert:nth-of-type(8n+5) .details .bg-image {
-  background: url(guitar.png);
+  background: url('../images/guitar.png');
 }
 
 .concert:nth-of-type(8n+6) .details .bg-image {
-  background: url(keys.png);
+  background: url('../images/keys.png');
 }
 
 .concert:nth-of-type(8n+7) .details .bg-image {
-  background: url(frenchhorn.png);
+  background: url('../images/frenchhorn.png');
 }
 
 .concert:nth-of-type(8n+8) .details .bg-image {
-  background: url(bigstrings.png);
+  background: url('../images/bigstrings.png');
 }
 
 /* tablets */
