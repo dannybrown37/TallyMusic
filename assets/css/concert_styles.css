@@ -118,35 +118,35 @@
 }
 
 .concert:nth-of-type(8n+1) .details .bg-image {
-  background: url('../images/drums.png');
+  background: url('/assets/images/drums.png');
 }
 
 .concert:nth-of-type(8n+2) .details .bg-image {
-  background: url('../images/electricguitar.png');
+  background: url('/assets/images/electricguitar.png');
 }
 
 .concert:nth-of-type(8n+3) .details .bg-image {
-  background: url('../images/synth.png');
+  background: url('/assets/images/synth.png');
 }
 
 .concert:nth-of-type(8n+4) .details .bg-image {
-  background: url('../images/bassguitar.png');
+  background: url('/assets/images/bassguitar.png');
 }
 
 .concert:nth-of-type(8n+5) .details .bg-image {
-  background: url('../images/guitar.png');
+  background: url('/assets/images/guitar.png');
 }
 
 .concert:nth-of-type(8n+6) .details .bg-image {
-  background: url('../images/keys.png');
+  background: url('/assets/images/keys.png');
 }
 
 .concert:nth-of-type(8n+7) .details .bg-image {
-  background: url('../images/frenchhorn.png');
+  background: url('/assets/images/frenchhorn.png');
 }
 
 .concert:nth-of-type(8n+8) .details .bg-image {
-  background: url('../images/bigstrings.png');
+  background: url('/assets/images/bigstrings.png');
 }
 
 /* tablets */
