@@ -34,7 +34,7 @@ class Concert(models.Model):
     time = models.CharField(max_length=100, blank=True)
     price = models.CharField(max_length=100, blank=True)
     website = models.URLField(blank=True)
-    age = models.CharField(max_length=7, default='Unknown', choices=AGE_CHOICES)
+    age = models.CharField(max_length=100, default='Unknown', choices=AGE_CHOICES)
     notes = models.TextField(blank=True)
 
     def __unicode__(self):
