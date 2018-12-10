@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # user-created apps
     'concerts',
+    'reset_migrations',
 ]
 
 MIDDLEWARE = [
