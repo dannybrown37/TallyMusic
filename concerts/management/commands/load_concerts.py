@@ -6,6 +6,7 @@ from django.db import IntegrityError
 from django.core.management.base import BaseCommand, CommandError
 from concerts.models import Concert, Venue
 from django.utils.text import slugify
+from django.db.utils import DataError
 
 # To run this code use:
 # python manage.py load_concerts name_of_file.json
@@ -25,6 +26,7 @@ class Command(BaseCommand):
         concerts_without_venues = []
         concerts_successfully_created = []
         duplicate_concerts_not_created = []
+        concerts_not_created_data_error = []
 
         for concert in data:
 
@@ -93,9 +95,12 @@ class Command(BaseCommand):
             except IntegrityError: # if slug already exists
                 duplicate_concerts_not_created.append(concert['slug'])
                 pass # if slug exists, just pass this concert
+            except DataError:
+                concerts_not_created_data_error.append(concert['slug'])
 
         print "Concerts created:", len(concerts_successfully_created)
         print "Duplicates not created:", len(duplicate_concerts_not_created)
+        print "Concerts with data errors:", len(concerts_not_created_data_error)
         print "Venues created: ", len(venues_successfully_created)
         print "Venues failed to be created:", len(venues_failed_to_be_created)
         print "Concerts without venues (WTF?):", len(concerts_without_venues)
