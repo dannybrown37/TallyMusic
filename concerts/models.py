@@ -20,12 +20,6 @@ class Venue(models.Model):
 
 
 class Concert(models.Model):
-    AGE_CHOICES = (
-        ('21+', '21+'),
-        ('18+', '18+'),
-        ('All Ages', 'All Ages'),
-        ('Unknown', 'Unknown'),
-    )
     headliner = models.CharField(max_length=100)
     date = models.DateField()
     slug = models.SlugField(max_length=100, unique=True, blank=False)
@@ -34,7 +28,7 @@ class Concert(models.Model):
     time = models.CharField(max_length=100, blank=True)
     price = models.CharField(max_length=100, blank=True)
     website = models.URLField(blank=True)
-    age = models.CharField(max_length=100, default='Unknown', choices=AGE_CHOICES)
+    age = models.CharField(max_length=100, blank=True)
     notes = models.TextField(blank=True)
 
     def __unicode__(self):
