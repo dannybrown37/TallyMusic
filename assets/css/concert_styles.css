@@ -159,14 +159,21 @@
 /* mobiles */
 @media screen and (max-width: 706px){
   .concerts {
-    grid-gap: 1.5vh;
+    grid-row-gap: 1.5vh;
   }
 
   .concert {
     grid-template-columns: 1fr;
+    max-width: 96vw;
+    margin: auto;
   }
 
   .concerts .concert .venue {
     max-width: 100%;
   }
+
+  .concerts .concert .details .notes {
+    word-break: break-all;
+  }
+
 }
