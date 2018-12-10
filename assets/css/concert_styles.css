@@ -165,6 +165,7 @@
   .concert {
     grid-template-columns: 1fr;
     max-width: 96vw;
+    min-width: 100%;
     margin: auto;
   }
 
