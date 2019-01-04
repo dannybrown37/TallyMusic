@@ -79,3 +79,23 @@ def past_venue_events(request, slug):
 
 def about(request):
     return render(request, "concerts/about.html")
+
+
+def search(request):
+    if request.method == 'GET':
+        search_term = request.GET.get('search')
+        try:
+            headliners = Concert.objects.filter(headliner__search=search_term)
+            notes = Concert.objects.filter(notes__search=search_term)
+            support = Concert.objects.filter(support__search=search_term)
+            venues = Concert.objects.filter(venue__name__search=search_term)
+            prices = Concert.objects.filter(price__search=search_term)
+            ages = Concert.objects.filter(age__search=search_term)
+            results = headliners | notes | support | venues | prices | ages
+        except Concert.DoesNotExist:
+            results = None
+        template = "concerts/search.html"
+        context = {"results" : results, "search_term" : search_term}
+        return render(request, template, context)
+    else:
+        return render(request, template, {})

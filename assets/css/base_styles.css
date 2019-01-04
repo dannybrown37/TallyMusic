@@ -34,6 +34,7 @@ header {
   grid-template-columns: 1fr 1fr;
   margin: 0;
   max-width: 100vw;
+  position: relative; /* to fix search bar */
 }
 
 .burgernav-mobile {
@@ -58,6 +59,7 @@ nav ul li {
   flex: 1;
   font-size: 1.5em;
   justify-content: space-around;
+  text-align: center;
 }
 
 nav a {
@@ -70,6 +72,20 @@ nav a:hover {
   background-color: #1D2731;
 }
 
+#search_form {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+input[type=text] {
+  color: #1D2731;
+  background-color: #D9B310;
+}
+
+input[type=text]::placeholder {
+  color: #0B3C5D;
+}
 
 /* big tablets,  small monitors, landscape mode */
 @media screen and (max-width: 1416px){
@@ -81,6 +97,7 @@ nav a:hover {
   header{
     grid-template-columns: 1fr;
     max-width: 99vw;
+    position: static;
   }
 
   h1.logo {
@@ -90,6 +107,16 @@ nav a:hover {
   .wrapper {
     max-width: 92vw;
   }
+
+  #search_form {
+    position: static;
+    margin-top: 5%;
+  }
+
+  input[type=text] {
+    width: 80%;
+  }
+
 }
 
 /* mobiles */
@@ -136,5 +163,17 @@ nav a:hover {
 
   nav.site_nav.open {
     height: auto;
+  }
+
+  #search_form {
+    margin-top: 0;
+  }
+
+  #search_input {
+    text-align: center;
+  }
+
+  input[type=text] {
+    width: 20%;
   }
 }

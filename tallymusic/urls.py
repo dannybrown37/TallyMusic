@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^about/$', concert_views.about, name="about"),
     url(r'^admin/', admin.site.urls),
     url(r'^concerts/', include('concerts.urls')),
+    url(r'^search/$', concert_views.search, name="search")
 ]

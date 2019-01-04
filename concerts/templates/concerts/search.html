@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Search for: {{ search_term }}</h1>
+<p>Found {{ results|length }} result{{ results|pluralize }}.</p>
+
+<div class="concerts">
+{% if results %}
+  {% for result in results %}
+  <div class="concert">
+    <div class="date">
+      <span class="day">{{ result.date.day }}</span>
+      <span class="month">{{ result.date|date:'F' }}</span>
+      <span class="year">{{ result.date.year }}</span>
+    </div>
+    <div class="details">
+      <div class="bg-image"></div>
+      <span class="headliner">{{ result.headliner }}</span>
+      <span class="support">{{ result.support }}</span>
+      <span class="price">{{ result.price }}</span>
+      {% if result.notes %}
+      <div class="notes open">Click for more information &#8595;</div>
+      <div class="notes">{{ result.notes|linebreaksbr }}</div>
+      <div class="notes">Click to hide &#8593;</div>
+      {% endif %}
+      <span class="concert_website">
+        <a href="{{ result.website }}" target="_blank">
+          Event Website &#9835;
+        </a>
+      </span>
+    </div>
+    <div class="venue">
+      <span class="venue_name">
+        <a href="{% url 'concerts:venue_events' slug=result.venue.slug %}">
+          {{ result.venue.name }}
+        </a>
+      </span>
+      <span class="address">
+        <a href="https://www.google.com/maps?q={{ result.venue.address }}"
+           target="_blank">
+          {{ result.venue.address }}
+        </a>
+      </span>
+      <span class="venue_website">
+        <a href="{{ result.venue.website }}" target="_blank">
+          Venue Website &#9833;
+        </a>
+      </span>
+    </div>
+  </div>
+  {% endfor %}
+{% endif %}
+</div>
+
+{% endblock %}
