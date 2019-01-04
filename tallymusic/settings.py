@@ -154,12 +154,15 @@ LOGGING = {
             'filename': 'mysite.log',
             'formatter': 'verbose'
         },
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
     },
     'loggers': {
         'django': {
-            'handlers':['file'],
+            'handlers':['file', 'console'],
             'propagate': True,
-            'level':'DEBUG',
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG')
         },
         'MYAPP': {
             'handlers': ['file'],
