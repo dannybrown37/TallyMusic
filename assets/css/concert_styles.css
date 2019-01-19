@@ -22,6 +22,23 @@
   border: 1px solid #D9B310;
 }
 
+/* Maybe come back to this, but it breaks ALL words and thus looks horrible */
+/* Instead just hiding overflow of long words, usually links */
+/* https://justmarkup.com/log/2015/07/dealing-with-long-words-in-css/ */
+/* https://css-tricks.com/almanac/properties/w/word-break/ */
+/*
+.hyphenate {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+*/
+
 /* DATE display */
 .concert .date {
   display: grid;
@@ -51,6 +68,8 @@
   padding: 10px;
   position: relative;
   padding-bottom: 4vh; /* percentage of viewport height */
+  overflow: hidden; /* this is an inelegant way of handling long words that
+                       break the layout */
 }
 
 .concert .details .headliner {
@@ -91,7 +110,7 @@
 
 .concert .venue .venue_name {
   font-size: 1.69em;
-  word-wrap: break-word;
+  /* word-wrap: break-word; old solution, delete if .hyphenate works */
 }
 
 .concert .venue .address {
@@ -174,7 +193,7 @@
   }
 
   .concerts .concert .details .notes {
-    word-break: break-all;
+    /* word-break: break-all; old solution, delete if .hyphenate works */
   }
 
 }
