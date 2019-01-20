@@ -19,10 +19,7 @@
   <!-- Concerts section  -->
   <div class="concerts">
     {% for concert in concerts %}
-      {% if forloop.counter == 8 or forloop.counter == 16 %}
-        {% include 'adsense.html' %}
-      {% endif %}
-      <div class="concert">
+      <div class="concert hyphenate">
         <div class="date">
           <span class="day">{{ concert.date.day }}</span>
           <span class="month">{{ concert.date|date:'F' }}</span>
