@@ -19,6 +19,12 @@
   <!-- Concerts section  -->
   <div class="concerts">
     {% for concert in concerts %}
+      {% if forloop.counter == 8 %}
+        {% include 'adsense.html' %}
+      {% endif %}
+      {% if forloop.counter == 16 %}
+        {% include 'adsense.html' %}
+      {% endif %}
       <div class="concert">
         <div class="date">
           <span class="day">{{ concert.date.day }}</span>
