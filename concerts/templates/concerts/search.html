@@ -8,6 +8,9 @@
 <div class="concerts">
 {% if results %}
   {% for result in results %}
+  {% if forloop.counter == 8 or forloop.counter == 16 %}
+    {% include 'adsense.html' %}
+  {% endif %}
   <div class="concert">
     <div class="date">
       <span class="day">{{ result.date.day }}</span>
