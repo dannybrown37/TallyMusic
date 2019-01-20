@@ -169,6 +169,7 @@
     max-width: 96vw;
     min-width: 100%;
     margin: auto;
+    overflow: hidden;
   }
 
   .concerts .concert .venue {
@@ -178,7 +179,7 @@
   /* Maybe come back to this, but it breaks ALL words and thus looks horrible */
   /* Instead just hiding overflow of long words, usually links */
   /* https://justmarkup.com/log/2015/07/dealing-with-long-words-in-css/ */
-  /* https://css-tricks.com/almanac/properties/w/word-break/ */
+  /* https://css-tricks.com/almanac/properties/w/word-break/
   .hyphenate {
     -ms-word-break: break-all;
     word-break: break-all;
@@ -189,5 +190,6 @@
     -moz-hyphens: auto;
     hyphens: auto;
   }
+  */
 
 }
