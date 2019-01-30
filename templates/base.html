@@ -48,7 +48,7 @@
           <li><a href="{% url 'concerts:venues' %}">Venues</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li>
-            <div  id="search_form">
+            <div id="search_form">
               <form name="search_form"
                     method="GET" action="{% url 'search' %}">
                 <input type="text" name="search" id="search_input"
@@ -70,6 +70,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{% static 'mobile_menu.js' %}"></script>
     <script src="{% static 'concert_notes_toggle.js' %}"></script>
+    <script src="{% static 'date_filter_toggle.js' %}"></script>
 
   </body>
 </html>
