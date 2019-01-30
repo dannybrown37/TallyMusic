@@ -92,14 +92,14 @@ def search(request):
             venues = Concert.objects.filter(venue__name__search=search_term)
             prices = Concert.objects.filter(price__search=search_term)
             ages = Concert.objects.filter(age__search=search_term)
-            results = headliners | notes | support | venues | prices | ages
+            concerts = headliners | notes | support | venues | prices | ages
         except Concert.DoesNotExist:
-            results = None
-        template = "concerts/search.html"
-        context = {"results" : results, "search_term" : search_term}
+            concerts = None
+        template = "concerts/calendar.html"
+        context = {"concerts" : concerts, "search_term" : search_term}
         return render(request, template, context)
     else:
-        return render(request, "concerts/search.html", {})
+        return render(request, "concerts/calendar.html", {})
 
 
 def filter_by_date(request):

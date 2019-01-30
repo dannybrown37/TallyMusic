@@ -15,11 +15,16 @@
   {%elif request.resolver_match.url_name == "date_filter" %}
     Found {{ concerts|length }} shows between {{ start_date|date:"M d, Y" }}
     and {{ end_date|date:"M d, Y" }}
+  {% elif request.resolver_match.url_name == "search" %}
+    Search for: {{ search_term }}
+    <p class="smaller">
+      Found {{ concerts|length }} result{{ concerts|pluralize }}.
+    </p>
   {% endif %}
   </h1>
 
   <div id="datefilter-container">
-    <p class="js-command">Filter shows by date &#8595;</p>
+    <p class="js-command">Find concerts by date &#8595;</p>
       <div id="datefilter">
         <form name="date-range-form" id="date-range-form"
               action="{% url 'concerts:date_filter' %}" method="GET">
@@ -38,6 +43,9 @@
   <!-- Concerts section  -->
   <div class="concerts">
     {% for concert in concerts %}
+    {% if forloop.counter == 8 or forloop.counter == 16 %}
+      {% include 'adsense.html' %}
+    {% endif %}
       <div class="concert">
         <div class="date">
           <span class="day">{{ concert.date.day }}</span>
