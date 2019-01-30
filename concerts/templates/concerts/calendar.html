@@ -3,15 +3,39 @@
 {% block content %}
 
   <!-- Variable header options -->
+  <h1 class="header">
   {% if request.resolver_match.url_name == "calendar" %}
-  <h1 class="header">Upcoming Events</h1>
+    Upcoming Events
   {% elif request.resolver_match.url_name == "past_events" %}
-  <h1 class="header">Past Events</h1>
+    Past Events
   {% elif request.resolver_match.url_name == "past_venue_events" %}
-  <h1 class="header">Past Events at {{ concerts.0.venue }}</h1>
+    Past Events at {{ concerts.0.venue }}
   {% elif request.resolver_match.url_name == "venue_events" %}
-  <h1 class="header">Upcoming Events at {{ concerts.0.venue }}</h1>
+    Upcoming Events at {{ concerts.0.venue }}
+  {%elif request.resolver_match.url_name == "date_filter" %}
+    Found {{ concerts|length }} shows between {{ start_date|date:"M d, Y" }}
+    and {{ end_date|date:"M d, Y" }}
+  {% elif request.resolver_match.url_name == "search" %}
+    Search for: {{ search_term }}
+    <p class="smaller">
+      Found {{ concerts|length }} result{{ concerts|pluralize }}.
+    </p>
   {% endif %}
+  </h1>
+
+  <div id="datefilter-container">
+    <p class="js-command">Find concerts by date &#8595;</p>
+      <div id="datefilter">
+        <form name="date-range-form" id="date-range-form"
+              action="{% url 'concerts:date_filter' %}" method="GET">
+          <label for="start">Start date:</label>
+          <input type="date" id="start" name="start" required>
+          <label for="end">End date:</label>
+          <input type="date" id="end" name="end" required>
+          <button type="submit" name="date_filter">Submit</button>
+        </form>
+      </div>
+    </div>
 
   <!-- Top paginator -->
   {% include 'concerts/paginator.html' %}
@@ -19,6 +43,9 @@
   <!-- Concerts section  -->
   <div class="concerts">
     {% for concert in concerts %}
+    {% if forloop.counter == 8 or forloop.counter == 16 %}
+      {% include 'adsense.html' %}
+    {% endif %}
       <div class="concert">
         <div class="date">
           <span class="day">{{ concert.date.day }}</span>
@@ -32,9 +59,9 @@
           <span class="support">{{ concert.support }}</span>
           <span class="price">{{ concert.price }}</span>
           {% if concert.notes %}
-          <div class="notes open">Click for more information &#8595;</div>
+          <div class="notes open js-command">Click for more information &#8595;</div>
           <div class="notes">{{ concert.notes|linebreaksbr }}</div>
-          <div class="notes">Click to hide &#8593;</div>
+          <div class="notes js-command">Click to hide &#8593;</div>
           {% endif %}
           <span class="concert_website">
             <a href="{{ concert.website }}" target="_blank">
