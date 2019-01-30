@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.core.paginator import EmptyPage, PageNotAnInteger #, Paginator
 from .digg_paginator import DiggPaginator as Paginator
 from .models import Concert, Venue
+from django.db.models import Q
 
 
 def calendar(request):
@@ -98,4 +99,31 @@ def search(request):
         context = {"results" : results, "search_term" : search_term}
         return render(request, template, context)
     else:
-        return render(request, template, {})
+        return render(request, "concerts/search.html", {})
+
+
+def filter_by_date(request):
+    if request.method == "GET":
+        # get start and end dates from the template
+        start_date = request.GET.get('start')
+        end_date = request.GET.get('end')
+        # try to find things on or between those dates
+        try:
+            concerts = Concert.objects.filter(
+                Q(date__gte=start_date) & Q(date__lte=end_date)
+            )
+        except Concert.DoesNotExist:
+            results = None
+        # convert our date strings to datetime objects for better rendering
+        start_date = datetime.datetime.strptime(start_date, "%Y-%m-%d")
+        end_date = datetime.datetime.strptime(end_date, "%Y-%m-%d")
+        # let's render it, yo
+        template = "concerts/calendar.html"
+        context = {
+            "concerts" : concerts,
+            "start_date" : start_date,
+            "end_date" : end_date
+        }
+        return render(request, template, context)
+    else:
+        return render(request, "concerts/calendar.html", {})

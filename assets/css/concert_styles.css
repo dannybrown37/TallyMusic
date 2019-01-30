@@ -10,6 +10,36 @@
   text-align: center;
 }
 
+#datefilter-container {
+  text-align: center;
+  margin: 0 0 1.69em;
+}
+
+#datefilter {
+  height: 0;
+  overflow: hidden;
+  position: static;
+}
+
+#datefilter.open {
+  height: auto;
+}
+
+.js-command {
+  cursor: pointer;
+}
+
+input[type=date] {
+  color: #1D2731;
+  background-color: #D9B310;
+  margin-right: 1.69vw;
+}
+
+button[name="date_filter"] {
+  color: #1D2731;
+  background-color: #D9B310;
+}
+
 .concerts {
   display: grid;
   grid-template-columns: 1fr;

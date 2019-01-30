@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^venues/$', views.venues, name="venues"),
     url(r'^venues/(?P<slug>[\w-]+)/$', v_events, name="venue_events"),
     url(r'^venues/(?P<slug>[\w-]+)/past/$', pv_events, name="past_venue_events"),
+    url(r'^date_filter/$', views.filter_by_date, name="date_filter"),
 ]
