@@ -203,8 +203,8 @@ button[name="date_filter"] {
     max-width: 96vw;
     min-width: 100%;
     margin: auto;
-    overflow: hidden;
-  }
+    overflow: hidden; /* handling long words in a better way would be good */
+  }                    /* (eventually someday) */
 
   .concerts .concert .venue {
     max-width: 100%;
